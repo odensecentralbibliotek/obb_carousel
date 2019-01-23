@@ -1,0 +1,63 @@
+/*
+* tab style
+*/
+#carousel-tab-wrapper
+{
+    padding-left:5px;
+}
+.obb-carousel-tab
+{
+    padding:3px;
+    margin-right: 10px;
+}
+.obb-tab-btn:hover
+{
+    cursor: pointer;
+}
+.obb-carousel-active-tab
+{
+    border-bottom: 5px solid #4285f4;
+}
+/*
+* carousel style
+*/
+.oc-carousel-control-wrapper{
+    float:right;
+}
+.oc-carousel-control{
+    width: 0px;
+}
+.oc-carousel-control span{
+    background-color: #4285f4;
+    color:white;
+    padding: 15px;
+}
+.oc-carousel-control:link {
+    text-decoration: none;
+}
+.oc-carousel-control span:hover {
+    color:black !important;
+}
+.carousel-inner
+{
+    padding:20px;
+}
+.obb-carousel-tab{
+    display:inline-block;
+}
+/* Modal efffect
+*
+*/
+.fade-scale {
+  transform: scale(0);
+  opacity: 0;
+  -webkit-transition: all .25s linear;
+  -o-transition: all .25s linear;
+  transition: all .25s linear;
+}
+
+.fade-scale.in {
+  opacity: 1;
+  transform: scale(1);
+}
+

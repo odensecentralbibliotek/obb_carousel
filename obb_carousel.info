@@ -1,0 +1,9 @@
+name = obb Carousel
+description = Show materials and other content in a carousel using bootstrap
+package = Obb
+version = "7.x-1.0"
+core = "7.x"
+dependencies[] = libraries
+dependencies[] = mobile_detect
+
+configure = admin/config/ting_search_carousel
