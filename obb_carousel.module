@@ -9,13 +9,14 @@ function obb_carousel_menu() {
     'access arguments' => array('configure carousel'),
     'file' => 'obb_carousel.admin.inc',
   );
-      $items['obb/carousel/ajax/get/preview/%'] = array(
+  $items['obb/carousel/ajax/get/preview/%'] = array(
     'page callback' => 'obb_carousel_get_preview', // Render HTML
     'description' => 'ajax load of material preview',
      'page arguments' => array(5),
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
    );
+
    return $items;
 }
 function obb_carousel_get_preview($material_id)
@@ -75,7 +76,7 @@ function obb_carousel_element_info() {
     '#tabs' => array(),
     '#transition' => 'fade',
     '#attached' => array(
-      'js' => array($path . '/js/obb_carousel.js',$path . '/js/obb_material_information.js'),
+      'js' => array($path . '/js/obb_carousel.js',$path . '/js/obb_material_information.js',$path . '/js/obb_material_loader.js'),
       'css' => array($path . '/css/obb_carousel.css'),
     ),
   );

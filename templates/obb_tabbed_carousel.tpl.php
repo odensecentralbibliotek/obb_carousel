@@ -12,9 +12,7 @@
     <div id="<?php echo "obb-carousel-tab-" .$index ?>" class="obb-carousel-tab <?php echo $index == 0 ? "obb-carousel-active-tab" : '' ?>" >
         <div obb-carousel-id="<?php echo $tabs[$index]['#carousel_id'] ?>" class="obb-tab-btn"><h3><?php echo $tab['#title'] ?></h3></div>
         <div id="tab-search-carousel-settings">
-            <input type="hidden" id="carousel-has-more" value="">
-            <input type="hidden" id="carousel-next-page" value="">
-            <input type="hidden" id="carousel-tab-search-index" value="<?php echo $index ?>">
+            <input type="hidden" id="carousel-options" value='<?php echo isset($tab['#carousel_options']) ? json_encode($tab['#carousel_options']) : '' ?>'>
         </div>
     </div>
     <?php
