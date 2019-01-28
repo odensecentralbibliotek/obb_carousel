@@ -45,6 +45,14 @@ function obb_carousel_theme() {
       'file' => 'obb_carousel.theme.inc',
       'render element' => 'item',
     ),
+    'obb_carousel_preloader' => array(
+        'template' => 'templates/obb_carousel_preloader',
+        'file' => 'obb_carousel.theme.inc',
+    ),
+    'obb_carousel_cover_lazy' => array(
+        'template' => 'templates/obb_carousel_cover_lazy',
+        'file' => 'obb_carousel.theme.inc',
+    )
   );
 }
 /**
@@ -86,6 +94,10 @@ function obb_carousel_element_info() {
     '#content' => '',
     '#placeholder' => FALSE,
   );
+  $types['obb_carousel_preloader'] = array(
+    '#theme' => 'obb_carousel_preloader',
+    'render element' => 'elements',
+  );
 
   return $types;
 }
@@ -111,13 +123,26 @@ function obb_carousel_obb_carousel_transitions() {
 function obb_carousel_transitions() {
   return module_invoke_all('obb_carousel_transitions');
 }
+
 function obb_carousel_init_settings()
 {
     module_load_include('php', 'mobile_detect', 'mobile_detect');
-    $detect = mobile_detect_get_object();
-    
+    $detect = new Mobile_Detect();
+
     $settings = array();
-    $settings['chunk_size'] = 8;
+    if( $detect->isMobile())
+    {
+        $settings['chunk_size'] = variable_get('obb_mobile_display_count',4);
+    }
+    else if($detect->isTablet())
+    {
+        $settings['chunk_size'] = variable_get('obb_tablet_display_count',4);
+    }
+    else
+    {
+        $settings['chunk_size'] = variable_get('obb_pc_display_count',8);
+    }
+    
     $settings['image_style'] = 'ting_inspiration_list_cover';
     
     return $settings;

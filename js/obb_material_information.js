@@ -1,25 +1,31 @@
 (function ($) {
     Drupal.behaviors.obbMaterialInformation = {
     attach: function(context) {
-        debugger;
-        var items = $('.carousel-inner').find('.item');
-        items.find('a').click(function(event){
+        
+       $('.carousel-inner').on('click','.item div',function(event){
             debugger;
-            var item = $(this).parent().parent();;
+            var item = $(this).parent().parent();
             var data = item.find('.ting-material-id');
             var materialId = data.val();
+            var modal = $('#obb-material-modal');
+            modal.modal(); //show modal with preloader.
             $.ajax({
                 url: "/obb/carousel/ajax/get/preview/" +materialId ,
               })
                 .done(function( data ) {
-                 var modal = $('#obb-material-modal');
+                 
                  modal.find('.modal-body').html(data);
-                 modal.modal();
+                 
                 });
             
             event.preventDefault();
             return false;
-        });
+        })
+       $('#obb-material-modal').on('hidden.bs.modal', function () {
+            $(this).find('.modal-body').html('<i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>');
+            
+        })
+        
      }
     }
     

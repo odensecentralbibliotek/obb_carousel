@@ -4,7 +4,7 @@ $options = array(
     'html' => TRUE,
     'attributes' => array('title' => $object->title),
     );
-$image = theme('ting_object_cover', array('elements' => array('#object' => $object, '#image_style' => 'ting_inspiration_list_cover')));
+$image = theme('obb_carousel_cover_lazy', array('elements' => array('#object' => $object, '#image_style' => 'ting_inspiration_list_cover')));
 $uri = entity_uri('ting_object', $object);
 $linked_image = l($image, $uri['path'], $options)
 ?>

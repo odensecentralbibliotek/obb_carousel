@@ -1,3 +1,4 @@
+
 (function ($) {
   Drupal.behaviors.obbCarousel = {
     attach: function(context) {
@@ -10,7 +11,7 @@
           var next_carousel = target_tab.parent().parent().parent().find('#' + next_carousel_id).parent();
           
           current_tab.removeClass('obb-carousel-active-tab');
-          target_tab.addClass('obb-carousel-active-tab');
+          target_tab.parent().addClass('obb-carousel-active-tab');
           
           current_carousel.fadeOut('slow',function(){
               current_carousel.removeClass('obb-active-carousel');
@@ -20,6 +21,9 @@
               });
           });          
       });
+      myLazyLoad = new LazyLoad({
+            elements_selector: ".lazy"
+        });
     }
   }
   

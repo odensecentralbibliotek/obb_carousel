@@ -41,5 +41,6 @@ function obb_carousel_list_admin_form($form, &$form_state) {
 		'#title' => t('Image style visninger'),
 		'#tree' => FALSE,
 	);
+    return $form;
     
 }

@@ -33,7 +33,7 @@
         <h4 class="modal-title">Modal title</h4>
       </div>
       <div class="modal-body">
-        
+        <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
