@@ -52,24 +52,29 @@
               })
                 .done(function( msg ) {
                     //debugger;
-                    var response = JSON.parse(msg);
-                    var active = preloader_ref.hasClass('active');
-                    preloader_ref.empty();
-                    
-                    if(active)
+                    var items = $(response.items);
+                    if(items.children().length != 0)
                     {
-                       
-                      preloader_ref.replaceWith($(response.items).addClass('active'));  
-                    }
-                    else
-                    {
-                        // append children because sometimes we load so fast we are mid slide change ,thus using replaceWith does not reall work optimal
-                        // optimize data returned from api to better fit.
-                        preloader_ref.append($(response.items).children()); 
-                        
+                        var response = JSON.parse(msg);
+                        var active = preloader_ref.hasClass('active');
+                        preloader_ref.empty();
+
+                        if(active)
+                        {
+
+                          preloader_ref.replaceWith(items.addClass('active'));  
+                        }
+                        else
+                        {
+                            // append children because sometimes we load so fast we are mid slide change ,thus using replaceWith does not reall work optimal
+                            // optimize data returned from api to better fit.
+                            preloader_ref.append(items.children()); 
+
+                        }
+                        myLazyLoad.update();
                     }
                     options.find('#carousel-options').val(JSON.stringify(response.options))
-                    myLazyLoad.update();
+                    
                 });
             if(cancel_slide)
             {
