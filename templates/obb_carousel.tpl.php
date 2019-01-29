@@ -21,11 +21,11 @@
 
   <!-- Controls -->
   <div class="oc-carousel-control-wrapper">
-    <a class="oc-carousel-control" href="#<?php echo $carousel_id ?>" role="button" data-slide="prev">
+    <a class="oc-carousel-control" href="#<?php echo $carousel_id ?>" role="button" data-slide="prev" onclick="return false;">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="oc-carousel-control" href="#<?php echo $carousel_id ?>" role="button" data-slide="next">
+    <a class="oc-carousel-control" href="#<?php echo $carousel_id ?>" role="button" data-slide="next" onclick="return false;">
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>

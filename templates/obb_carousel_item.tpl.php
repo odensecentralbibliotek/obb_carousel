@@ -22,4 +22,3 @@ $linked_image = l($image, $uri['path'], $options)
       </div>
   </div>
 </div>
-<!-- We got a need for speed...so we use js templates for preview of materials! -->

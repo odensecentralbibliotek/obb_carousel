@@ -15,6 +15,7 @@
         
         if(active_item.find('.preloader').length != 0 && direction == "left")
         {
+            
             return false;
         }
         if(active_item.find('.preloader').length != 0 && direction == "right")
@@ -26,13 +27,12 @@
             return false;
         }
         //only do ajax get if we are done with the previous one.
-        if(carouselOptions != undefined && direction == "left" && carousel.find('.carousel-inner').find('.preloader').length == 0 )
+        if(carouselOptions != "" && direction == "left" && carousel.find('.carousel-inner').find('.preloader').length == 0 )
         {
             var cancel_slide = false;
             
             if($(active_item).is(':last-child'))
             {
-                debugger;
                 cancel_slide = true;
                 active_item.removeClass('active');
                 carousel.find('.carousel-inner').append($(preloader).addClass('active'));
@@ -58,11 +58,15 @@
                     
                     if(active)
                     {
+                       
                       preloader_ref.replaceWith($(response.items).addClass('active'));  
                     }
                     else
                     {
-                        preloader_ref.replaceWith(response.items);
+                        // append children because sometimes we load so fast we are mid slide change ,thus using replaceWith does not reall work optimal
+                        // optimize data returned from api to better fit.
+                        preloader_ref.append($(response.items).children()); 
+                        
                     }
                     options.find('#carousel-options').val(JSON.stringify(response.options))
                     myLazyLoad.update();
