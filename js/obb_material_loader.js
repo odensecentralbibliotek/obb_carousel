@@ -22,7 +22,7 @@
         {
             return true;
         }
-        if($(active_item).is(':first-child') && direction == "right")
+        if($(active_item).is(':first-child') && direction == "right" && carouselOptions != "")
         {
             return false;
         }
@@ -52,10 +52,21 @@
               })
                 .done(function( msg ) {
                     //debugger;
+                    if(msg != "")
+                    {
+                       var response = JSON.parse(msg); 
+                    }
+                    else
+                    {
+                        debugger;
+                        preloader_ref.remove();
+                        options.find('#carousel-options').val('');
+                        return;
+                    }
+                    
                     var items = $(response.items);
                     if(items.children().length != 0)
-                    {
-                        var response = JSON.parse(msg);
+                    {   
                         var active = preloader_ref.hasClass('active');
                         preloader_ref.empty();
 
@@ -72,6 +83,11 @@
 
                         }
                         myLazyLoad.update();
+                    }
+                    else
+                    {
+                        preloader_ref.remove();
+                        
                     }
                     options.find('#carousel-options').val(JSON.stringify(response.options))
                     
